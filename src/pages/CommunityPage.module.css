@@ -1,0 +1,394 @@
+.page {
+  min-height: 100vh;
+  background: var(--beige);
+}
+
+.main {
+  padding: 40px 0 80px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Feed */
+.feedHeader {
+  margin-bottom: 24px;
+}
+
+.feedTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.feedSubtitle {
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+/* New post */
+.newPost {
+  display: flex;
+  gap: 14px;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.newPostForm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.newPostForm textarea {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1.5px solid rgba(0,0,0,0.08);
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  background: transparent;
+  resize: none;
+  line-height: 1.6;
+  transition: border-color 0.2s;
+}
+
+.newPostForm textarea:focus {
+  border-bottom-color: var(--violet);
+}
+
+.newPostFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.newPostHint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+/* Filter */
+.filterTabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.filterTab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  background: white;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.filterTab:hover {
+  color: var(--violet);
+  border-color: var(--violet-light);
+}
+
+.filterActive {
+  background: var(--violet);
+  color: white;
+  border-color: var(--violet);
+}
+
+/* Posts */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.postCard {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.2s;
+}
+
+.postCard:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.postAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  flex-shrink: 0;
+}
+
+.postMeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.postMeta strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.postMeta span {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.postTime {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+
+.postContent {
+  font-size: 0.92rem;
+  color: var(--text-medium);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+
+.postActions {
+  display: flex;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-light);
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.actionBtn:hover {
+  color: var(--violet);
+  border-color: var(--violet-light);
+  background: rgba(123,94,167,0.05);
+}
+
+.liked {
+  color: #e05580;
+  border-color: rgba(224,85,128,0.3);
+  background: rgba(224,85,128,0.05);
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 80px;
+}
+
+.sideCard {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.sideCard h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sideCardHighlight {
+  border: 1px solid rgba(201,168,76,0.2);
+  background: linear-gradient(135deg, rgba(201,168,76,0.04), white);
+}
+
+.sideStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sideStat {
+  text-align: center;
+  padding: 12px;
+  background: var(--beige);
+  border-radius: var(--radius-sm);
+}
+
+.sideStat strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--violet);
+}
+
+.sideStat span {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+.profilePreview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.profilePreview strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.profilePreview span {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.normas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.normas li {
+  font-size: 0.82rem;
+  color: var(--text-medium);
+  line-height: 1.4;
+}
+
+.topGuides {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guideRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guideRank {
+  width: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  text-align: center;
+}
+
+.guideAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+.guideName {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.guidePoints {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+  }
+}
