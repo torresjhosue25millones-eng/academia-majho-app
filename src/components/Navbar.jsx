@@ -1,4 +1,18 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+
+function LogoImg() {
+  const [failed, setFailed] = useState(false)
+  const onErr = useCallback(() => setFailed(true), [])
+  if (failed) return (
+    <>
+      <span style={{ color: 'var(--gold)', fontSize: '1.3rem' }}>✦</span>
+      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: '1.2rem', color: 'var(--text-dark)' }}>
+        Academia <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>MAJHO</em>
+      </span>
+    </>
+  )
+  return <img src="/assets/logo-majho.png" alt="Academia MAJHO" style={{ height: 40, width: 'auto' }} onError={onErr} />
+}
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAcademia } from '../context/AcademiaContext'
 import { Menu, X, LogOut, Award, Users, LayoutDashboard } from 'lucide-react'
@@ -25,8 +39,7 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.inner}>
         <Link to="/dashboard" className={styles.logo}>
-          <span className={styles.logoSymbol}>✦</span>
-          <span className={styles.logoText}>Academia <em>MAJHO</em></span>
+          <LogoImg />
         </Link>
 
         <div className={styles.links}>

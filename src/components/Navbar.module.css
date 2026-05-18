@@ -41,7 +41,7 @@
 
 .logoText em {
   font-style: italic;
-  color: var(--violet);
+  color: var(--gold);
 }
 
 .links {
@@ -64,13 +64,13 @@
 }
 
 .link:hover {
-  background: rgba(123, 94, 167, 0.1);
-  color: var(--violet);
+  background: rgba(92, 138, 110, 0.1);
+  color: var(--green);
 }
 
 .active {
-  background: rgba(123, 94, 167, 0.12);
-  color: var(--violet);
+  background: rgba(92, 138, 110, 0.12);
+  color: var(--green);
   font-weight: 600;
 }
 
@@ -118,7 +118,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
   color: white;
   display: flex;
   align-items: center;
@@ -170,8 +170,8 @@
 }
 
 .mobileLink:hover {
-  background: rgba(123, 94, 167, 0.08);
-  color: var(--violet);
+  background: rgba(92, 138, 110, 0.08);
+  color: var(--green);
 }
 
 .mobileLogout {

@@ -42,7 +42,7 @@
 
 .logoText em {
   font-style: italic;
-  color: var(--violet);
+  color: var(--gold);
 }
 
 .headerActions {
@@ -63,7 +63,7 @@
 .heroGlow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(123, 94, 167, 0.12) 0%, transparent 70%),
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(92, 138, 110, 0.10) 0%, transparent 70%),
               radial-gradient(ellipse 60% 40% at 80% 70%, rgba(201, 168, 76, 0.08) 0%, transparent 60%);
   pointer-events: none;
 }
@@ -91,7 +91,7 @@
 
 .heroTitle em {
   font-style: italic;
-  color: var(--violet);
+  color: var(--gold);
 }
 
 .heroSubtitle {
@@ -134,7 +134,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(123,94,167,0.08), transparent 70%);
+  background: radial-gradient(circle, rgba(92,138,110,0.08), transparent 70%);
   top: -100px;
   right: -100px;
 }
@@ -268,8 +268,8 @@
 }
 
 .moduleCard:hover {
-  border-color: var(--violet-light);
-  background: var(--pink-light);
+  border-color: var(--gold-light);
+  background: var(--beige-dark);
 }
 
 .moduleNum {
@@ -343,7 +343,7 @@
 
 .includesLeft h2 em {
   font-style: italic;
-  color: var(--violet);
+  color: var(--gold);
 }
 
 .includesList {
@@ -385,7 +385,7 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.2rem;
   font-weight: 700;
-  color: var(--violet);
+  color: var(--gold-dark);
   line-height: 1;
 }
 
@@ -468,7 +468,7 @@
 
 .ctaBox {
   position: relative;
-  background: linear-gradient(135deg, var(--violet) 0%, var(--violet-dark) 60%, #4A3070 100%);
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 60%, #2B4A36 100%);
   border-radius: var(--radius-xl);
   padding: 80px 40px;
   text-align: center;

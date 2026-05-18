@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { useAcademia } from '../context/AcademiaContext'
 import { MODULES } from '../data/modules'
 import { Star, CheckCircle, Users, Award, BookOpen, Heart } from 'lucide-react'
 import styles from './Landing.module.css'
+
+function LogoImg({ className = 'h-10 w-auto', fallbackClass = '' }) {
+  const [failed, setFailed] = useState(false)
+  if (failed) return (
+    <div className={fallbackClass} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <span style={{ color: 'var(--gold)', fontSize: '1.5rem' }}>✦</span>
+      <span className={styles.logoText}>Academia <em>MAJHO</em></span>
+    </div>
+  )
+  return <img src="/assets/logo-majho.png" alt="Academia MAJHO" style={{ height: 48, width: 'auto' }} onError={() => setFailed(true)} />
+}
 
 const PILLARS = [
   { icon: '🧠', title: 'Neurociencia', desc: 'Basado en la ciencia del desarrollo cerebral infantil' },
@@ -26,8 +38,7 @@ export default function Landing() {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <div className={styles.logo}>
-            <span className={styles.logoSymbol}>✦</span>
-            <span className={styles.logoText}>Academia <em>MAJHO</em></span>
+            <LogoImg />
           </div>
           <div className={styles.headerActions}>
             {user ? (
@@ -208,8 +219,7 @@ export default function Landing() {
       <footer className={styles.footer}>
         <div className="container">
           <div className={styles.footerLogo}>
-            <span style={{ color: 'var(--gold)' }}>✦</span>
-            <span>Academia <em>MAJHO</em></span>
+            <LogoImg />
           </div>
           <p>Formación Espiritual y Científica para Acompañar Niños de Alta Vibración</p>
           <p style={{ marginTop: 8, fontSize: '0.8rem', opacity: 0.5 }}>© 2024 Academia MAJHO · Todos los derechos reservados</p>
