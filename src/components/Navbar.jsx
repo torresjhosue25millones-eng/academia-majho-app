@@ -11,7 +11,7 @@ function LogoImg() {
       </span>
     </>
   )
-  return <img src="/assets/logo-majho.png" alt="Academia MAJHO" style={{ height: 40, width: 'auto' }} onError={onErr} />
+  return <img src="/assets/logo-majho.png" alt="Academia MAJHO" style={{ height: 70, width: 'auto' }} onError={onErr} />
 }
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAcademia } from '../context/AcademiaContext'

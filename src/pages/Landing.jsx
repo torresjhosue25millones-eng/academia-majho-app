@@ -13,7 +13,7 @@ function LogoImg({ className = 'h-10 w-auto', fallbackClass = '' }) {
       <span className={styles.logoText}>Academia <em>MAJHO</em></span>
     </div>
   )
-  return <img src="/assets/logo-majho.png" alt="Academia MAJHO" style={{ height: 48, width: 'auto' }} onError={() => setFailed(true)} />
+  return <img src="/assets/logo-majho.png" alt="Academia MAJHO" style={{ height: 70, width: 'auto' }} onError={() => setFailed(true)} />
 }
 
 const PILLARS = [
