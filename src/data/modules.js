@@ -78,7 +78,7 @@ export const MODULES = [
     duration: '4h 00min',
     lessons: 10,
     videoUrl: '',
-    pdfName: 'MAJHO_Modulo3_PNL_Familias_Despiertas_1_.pdf',
+    pdfName: 'MAJHO_Modulo3_PNL_Familias_Despiertas(1).pdf',
     exercise: {
       title: 'Instalando Anclas de Poder',
       description: 'Practica la técnica de anclaje con el niño y documenta los resultados.',
