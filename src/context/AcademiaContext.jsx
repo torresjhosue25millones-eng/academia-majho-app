@@ -1,19 +1,14 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { supabase } from '../supabaseClient'
 import { MODULES } from '../data/modules'
-
+ 
 const AcademiaContext = createContext()
-
+ 
 export function AcademiaProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const saved = localStorage.getItem('majho_user')
-    return saved ? JSON.parse(saved) : null
-  })
-
-  const [progress, setProgress] = useState(() => {
-    const saved = localStorage.getItem('majho_progress')
-    return saved ? JSON.parse(saved) : {}
-  })
-
+  const [user, setUser] = useState(null)
+  const [progress, setProgress] = useState({})
+  const [loadingAuth, setLoadingAuth] = useState(true)
+ 
   const [communityPosts, setCommunityPosts] = useState(() => {
     const saved = localStorage.getItem('majho_posts')
     if (saved) return JSON.parse(saved)
@@ -68,64 +63,154 @@ export function AcademiaProvider({ children }) {
       }
     ]
   })
-
+ 
+  // ── Escucha la sesión activa de Supabase al cargar la app ──
   useEffect(() => {
-    if (user) localStorage.setItem('majho_user', JSON.stringify(user))
-    else localStorage.removeItem('majho_user')
-  }, [user])
-
-  useEffect(() => {
-    localStorage.setItem('majho_progress', JSON.stringify(progress))
-  }, [progress])
-
-  useEffect(() => {
-    localStorage.setItem('majho_posts', JSON.stringify(communityPosts))
-  }, [communityPosts])
-
-  const login = (userData) => {
-    const fullUser = { ...userData, joinedAt: new Date().toISOString() }
-    setUser(fullUser)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          email: session.user.email,
+          name: session.user.user_metadata?.name || '',
+          role: session.user.user_metadata?.role || ''
+        })
+        loadProgress(session.user.id)
+      }
+      setLoadingAuth(false)
+    })
+ 
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser({
+          id: session.user.id,
+          email: session.user.email,
+          name: session.user.user_metadata?.name || '',
+          role: session.user.user_metadata?.role || ''
+        })
+        loadProgress(session.user.id)
+      } else {
+        setUser(null)
+        setProgress({})
+      }
+    })
+ 
+    return () => listener.subscription.unsubscribe()
+  }, [])
+ 
+  // ── Carga el progreso desde Supabase ──
+  const loadProgress = async (userId) => {
+    const { data, error } = await supabase
+      .from('progress')
+      .select('*')
+      .eq('user_id', userId)
+ 
+    if (!error && data) {
+      const progressMap = {}
+      data.forEach(row => {
+        progressMap[row.module_id] = {
+          videoWatched: row.video_watched,
+          pdfDownloaded: row.pdf_downloaded,
+          exerciseCompleted: row.exercise_completed,
+          exerciseAnswers: row.exercise_answers
+        }
+      })
+      setProgress(progressMap)
+    }
   }
-
-  const logout = () => {
+ 
+  // ── Guarda/actualiza progreso en Supabase ──
+  const saveProgress = async (moduleId, updates) => {
+    if (!user?.id) return
+    const { error } = await supabase
+      .from('progress')
+      .upsert({
+        user_id: user.id,
+        module_id: moduleId,
+        ...updates,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'user_id,module_id' })
+ 
+    if (!error) {
+      setProgress(prev => ({
+        ...prev,
+        [moduleId]: { ...prev[moduleId], ...updates }
+      }))
+    }
+  }
+ 
+  // ── Login con Supabase ──
+  const login = async ({ email, password }) => {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) throw error
+    return data
+  }
+ 
+  // ── Registro con Supabase ──
+  const register = async ({ name, email, role, password }) => {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { name, role } }
+    })
+    if (error) throw error
+    return data
+  }
+ 
+  // ── Logout ──
+  const logout = async () => {
+    await supabase.auth.signOut()
     setUser(null)
+    setProgress({})
   }
-
+ 
   const markVideoWatched = (moduleId) => {
-    setProgress(prev => ({
-      ...prev,
-      [moduleId]: { ...prev[moduleId], videoWatched: true }
-    }))
+    const current = progress[moduleId] || {}
+    saveProgress(moduleId, {
+      video_watched: true,
+      pdf_downloaded: current.pdfDownloaded || false,
+      exercise_completed: current.exerciseCompleted || false,
+      exercise_answers: current.exerciseAnswers || null
+    })
   }
-
+ 
   const markPdfDownloaded = (moduleId) => {
-    setProgress(prev => ({
-      ...prev,
-      [moduleId]: { ...prev[moduleId], pdfDownloaded: true }
-    }))
+    const current = progress[moduleId] || {}
+    saveProgress(moduleId, {
+      video_watched: current.videoWatched || false,
+      pdf_downloaded: true,
+      exercise_completed: current.exerciseCompleted || false,
+      exercise_answers: current.exerciseAnswers || null
+    })
   }
-
+ 
   const markExerciseCompleted = (moduleId, answers) => {
-    setProgress(prev => ({
-      ...prev,
-      [moduleId]: { ...prev[moduleId], exerciseCompleted: true, exerciseAnswers: answers }
-    }))
+    const current = progress[moduleId] || {}
+    saveProgress(moduleId, {
+      video_watched: current.videoWatched || false,
+      pdf_downloaded: current.pdfDownloaded || false,
+      exercise_completed: true,
+      exercise_answers: answers
+    })
   }
-
+ 
   const getModuleProgress = (moduleId) => {
     const p = progress[moduleId] || {}
     const steps = [p.videoWatched, p.pdfDownloaded, p.exerciseCompleted]
     return Math.round((steps.filter(Boolean).length / 3) * 100)
   }
-
+ 
   const isModuleComplete = (moduleId) => {
     const p = progress[moduleId] || {}
     return p.videoWatched && p.pdfDownloaded && p.exerciseCompleted
   }
-
+ 
   const completedModules = MODULES.filter(m => isModuleComplete(m.id)).length
   const allCompleted = completedModules === MODULES.length
-
+ 
+  useEffect(() => {
+    localStorage.setItem('majho_posts', JSON.stringify(communityPosts))
+  }, [communityPosts])
+ 
   const likePost = (postId) => {
     setCommunityPosts(prev => prev.map(post =>
       post.id === postId
@@ -133,7 +218,7 @@ export function AcademiaProvider({ children }) {
         : post
     ))
   }
-
+ 
   const addPost = (content) => {
     const newPost = {
       id: Date.now(),
@@ -149,10 +234,12 @@ export function AcademiaProvider({ children }) {
     }
     setCommunityPosts(prev => [newPost, ...prev])
   }
-
+ 
+  if (loadingAuth) return null
+ 
   return (
     <AcademiaContext.Provider value={{
-      user, login, logout,
+      user, login, logout, register,
       progress, markVideoWatched, markPdfDownloaded, markExerciseCompleted,
       getModuleProgress, isModuleComplete, completedModules, allCompleted,
       communityPosts, likePost, addPost
@@ -161,5 +248,5 @@ export function AcademiaProvider({ children }) {
     </AcademiaContext.Provider>
   )
 }
-
+ 
 export const useAcademia = () => useContext(AcademiaContext)
