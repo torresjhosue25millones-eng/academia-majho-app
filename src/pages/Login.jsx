@@ -107,11 +107,4 @@ export default function Login() {
     </div>
   )
 }
-<p className={styles.switch}>
-            ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}
+
