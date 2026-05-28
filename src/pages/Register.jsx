@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAcademia } from '../context/AcademiaContext'
 import { Eye, EyeOff, Mail, Lock, User, Briefcase } from 'lucide-react'
 import styles from './Auth.module.css'
-
+ 
 const ROLES = [
   'Mamá / Papá',
   'Educador/a',
@@ -11,15 +11,16 @@ const ROLES = [
   'Terapeuta',
   'Otro profesional',
 ]
-
+ 
 export default function Register() {
-  const { login } = useAcademia()
+  const { register } = useAcademia()
   const navigate = useNavigate()
   const [form, setForm] = useState({ name: '', email: '', role: '', password: '', confirm: '' })
   const [showPass, setShowPass] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
@@ -36,15 +37,44 @@ export default function Register() {
       return
     }
     setLoading(true)
-    await new Promise(r => setTimeout(r, 900))
-    const userData = { name: form.name, email: form.email, role: form.role, password: form.password }
-    localStorage.setItem('majho_registered_' + form.email, JSON.stringify(userData))
-    login(userData)
-    navigate('/dashboard')
+    try {
+      await register({ name: form.name, email: form.email, role: form.role, password: form.password })
+      setSuccess(true)
+    } catch (err) {
+      if (err.message?.includes('already registered')) {
+        setError('Ya existe una cuenta con ese correo. ¿Deseas iniciar sesión?')
+      } else if (err.message?.includes('Password should be at least')) {
+        setError('La contraseña debe tener al menos 6 caracteres.')
+      } else {
+        setError('No pudimos crear tu cuenta. Intenta de nuevo.')
+      }
+    } finally {
+      setLoading(false)
+    }
   }
-
+ 
   const set = (key) => (e) => setForm({ ...form, [key]: e.target.value })
-
+ 
+  if (success) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.right} style={{ width: '100%', justifyContent: 'center' }}>
+          <div className={styles.formBox} style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✦</div>
+            <h1 className={styles.formTitle}>¡Cuenta creada!</h1>
+            <p className={styles.formSubtitle}>
+              Te enviamos un correo de confirmación a <strong>{form.email}</strong>.<br /><br />
+              Revisa tu bandeja de entrada (y la carpeta de spam) y haz clic en el enlace para activar tu cuenta.
+            </p>
+            <p style={{ marginTop: '2rem' }}>
+              <Link to="/login" className="btn-primary">Ir al inicio de sesión ✦</Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+ 
   return (
     <div className={styles.page}>
       <div className={styles.left}>
@@ -64,12 +94,12 @@ export default function Register() {
           </div>
         </div>
       </div>
-
+ 
       <div className={styles.right}>
         <div className={styles.formBox}>
           <h1 className={styles.formTitle}>Crea tu cuenta</h1>
           <p className={styles.formSubtitle}>Comienza tu formación como Guía MAJHO</p>
-
+ 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.field}>
               <label>Nombre completo</label>
@@ -78,7 +108,7 @@ export default function Register() {
                 <input type="text" placeholder="Tu nombre" value={form.name} onChange={set('name')} />
               </div>
             </div>
-
+ 
             <div className={styles.field}>
               <label>Correo electrónico</label>
               <div className={styles.inputWrap}>
@@ -86,7 +116,7 @@ export default function Register() {
                 <input type="email" placeholder="tu@correo.com" value={form.email} onChange={set('email')} />
               </div>
             </div>
-
+ 
             <div className={styles.field}>
               <label>¿Cuál es tu rol?</label>
               <div className={styles.inputWrap}>
@@ -101,7 +131,7 @@ export default function Register() {
                 </select>
               </div>
             </div>
-
+ 
             <div className={styles.field}>
               <label>Contraseña</label>
               <div className={styles.inputWrap}>
@@ -117,7 +147,7 @@ export default function Register() {
                 </button>
               </div>
             </div>
-
+ 
             <div className={styles.field}>
               <label>Confirmar contraseña</label>
               <div className={styles.inputWrap}>
@@ -130,15 +160,15 @@ export default function Register() {
                 />
               </div>
             </div>
-
+ 
             {error && <div className={styles.error}>{error}</div>}
-
+ 
             <button type="submit" className={`btn-primary ${styles.submitBtn}`} disabled={loading}>
               {loading ? <span className={styles.spinner} /> : null}
               {loading ? 'Creando tu cuenta...' : 'Comenzar mi formación ✦'}
             </button>
           </form>
-
+ 
           <p className={styles.switch}>
             ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
           </p>
