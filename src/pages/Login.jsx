@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAcademia } from '../context/AcademiaContext'
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react'
 import styles from './Auth.module.css'
-
+ 
 export default function Login() {
   const { login } = useAcademia()
   const navigate = useNavigate()
@@ -11,7 +11,7 @@ export default function Login() {
   const [showPass, setShowPass] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
@@ -20,23 +20,22 @@ export default function Login() {
       return
     }
     setLoading(true)
-    await new Promise(r => setTimeout(r, 800))
-    const stored = localStorage.getItem('majho_registered_' + form.email)
-    if (!stored) {
-      setError('No encontramos una cuenta con ese correo. ¿Deseas registrarte?')
+    try {
+      await login({ email: form.email, password: form.password })
+      navigate('/dashboard')
+    } catch (err) {
+      if (err.message?.includes('Invalid login credentials')) {
+        setError('Correo o contraseña incorrectos. Verifica tus datos.')
+      } else if (err.message?.includes('Email not confirmed')) {
+        setError('Debes confirmar tu correo electrónico antes de ingresar. Revisa tu bandeja de entrada.')
+      } else {
+        setError('No pudimos iniciar sesión. Intenta de nuevo.')
+      }
+    } finally {
       setLoading(false)
-      return
     }
-    const userData = JSON.parse(stored)
-    if (userData.password !== form.password) {
-      setError('Contraseña incorrecta. Inténtalo de nuevo.')
-      setLoading(false)
-      return
-    }
-    login(userData)
-    navigate('/dashboard')
   }
-
+ 
   return (
     <div className={styles.page}>
       <div className={styles.left}>
@@ -56,12 +55,12 @@ export default function Login() {
           </div>
         </div>
       </div>
-
+ 
       <div className={styles.right}>
         <div className={styles.formBox}>
           <h1 className={styles.formTitle}>Bienvenida/o de vuelta</h1>
           <p className={styles.formSubtitle}>Ingresa a tu espacio de aprendizaje</p>
-
+ 
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.field}>
               <label>Correo electrónico</label>
@@ -75,7 +74,7 @@ export default function Login() {
                 />
               </div>
             </div>
-
+ 
             <div className={styles.field}>
               <label>Contraseña</label>
               <div className={styles.inputWrap}>
@@ -91,24 +90,22 @@ export default function Login() {
                 </button>
               </div>
             </div>
-
+ 
             {error && <div className={styles.error}>{error}</div>}
-
+ 
             <button type="submit" className={`btn-primary ${styles.submitBtn}`} disabled={loading}>
               {loading ? <span className={styles.spinner} /> : null}
               {loading ? 'Ingresando...' : 'Ingresar al curso ✦'}
             </button>
           </form>
-
+ 
           <p className={styles.switch}>
             ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
           </p>
-
-          <div className={styles.demo}>
-            <p>¿Primera vez? Puedes registrarte con cualquier correo y contraseña.</p>
-          </div>
         </div>
       </div>
     </div>
+  )
+}
   )
 }
