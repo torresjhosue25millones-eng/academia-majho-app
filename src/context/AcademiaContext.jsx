@@ -120,24 +120,29 @@ export function AcademiaProvider({ children }) {
  
   // ── Guarda/actualiza progreso en Supabase ──
   const saveProgress = async (moduleId, updates) => {
-    if (!user?.id) return
-    const { error } = await supabase
-      .from('progress')
-      .upsert({
-        user_id: user.id,
-        module_id: moduleId,
-        ...updates,
-        updated_at: new Date().toISOString()
-      }, { onConflict: 'user_id,module_id' })
- 
-    if (!error) {
-      setProgress(prev => ({
-        ...prev,
-        [moduleId]: { ...prev[moduleId], ...updates }
-      }))
-    }
+  if (!user?.id) return
+  const { error } = await supabase
+    .from('progress')
+    .upsert({
+      user_id: user.id,
+      module_id: moduleId,
+      ...updates,
+      updated_at: new Date().toISOString()
+    }, { onConflict: 'user_id,module_id' })
+
+  if (!error) {
+    setProgress(prev => ({
+      ...prev,
+      [moduleId]: {
+        ...prev[moduleId],
+        videoWatched: updates.video_watched ?? prev[moduleId]?.videoWatched,
+        pdfDownloaded: updates.pdf_downloaded ?? prev[moduleId]?.pdfDownloaded,
+        exerciseCompleted: updates.exercise_completed ?? prev[moduleId]?.exerciseCompleted,
+        exerciseAnswers: updates.exercise_answers ?? prev[moduleId]?.exerciseAnswers,
+      }
+    }))
   }
- 
+}
   // ── Login con Supabase ──
   const login = async ({ email, password }) => {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
