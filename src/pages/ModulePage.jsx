@@ -14,12 +14,12 @@ function VideoTab({ module, watched, onWatch }) {
   const welcomeSubtitles = {
     1: '¡Bienvenida al curso premium de crianza consciente!',
     2: 'El cerebro de tu hijo es un universo por descubrir',
-    3: 'El vínculo que sana y transforma',
-    4: 'Reprograma, ancla y co-crea con tu hijo',
-    5: 'La sabiduría de los ancestros vive en ti',
-    6: 'La quietud es el lenguaje del alma infantil',
+    3: 'Reprograma, ancla y co-crea con tu hijo',
+    4: 'La sabiduría de los ancestros vive en ti',
+    5: 'La quietud es el lenguaje del alma infantil',
+    6: 'El vínculo que sana y transforma',
     7: 'Tu hijo llegó con un mapa cósmico único',
-    8: 'Sanar el linaje es el regalo más grande',
+    8: 'Cada niño vibra con una luz única',
     9: 'Eres ahora una Guía MAJHO certificada',
   }
 

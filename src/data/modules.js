@@ -29,7 +29,7 @@ export const MODULES = [
           id: 'q3',
           type: 'checkbox',
           label: '¿Cuál de los 4 pilares sientes que necesita más atención?',
-          options: ['Pilar Emocional', 'Pilar Espiritual', 'Pilar Cognitivo', 'Pilar Físico-Energético']
+          options: ['Neurociencia', 'PNL', 'Psicología Infantil', 'Sabiduría Ancestral']
         }
       ]
     }
@@ -207,34 +207,34 @@ export const MODULES = [
   },
   {
     id: 7,
-    title: "Ho'oponopono y Sanación Familiar",
-    subtitle: 'Perdón, limpieza transgeneracional',
-    description: "Practica el antiguo arte hawaiano del Ho'oponopono para sanar heridas familiares, liberar patrones transgeneracionales y crear un campo energético de amor incondicional en el hogar.",
-    icon: '🌺',
+    title: 'Numerología y Astrología Infantil',
+    subtitle: 'Descifrando el propósito del alma de cada niño',
+    description: 'Descubre cómo la numerología y la carta astral revelan los dones, desafíos y el propósito de vida de cada niño, ofreciéndote un mapa único para acompañarlo según su esencia.',
+    icon: '🔢',
     color: '#F2C4CE',
     duration: '3h 45min',
     lessons: 8,
     videoUrl: '',
-    pdfName: 'MAJHO_Modulo7_Hooponopono_Familiar.pdf',
+    pdfName: 'MAJHO_Modulo7_Numerologia_Astrologia.pdf',
     exercise: {
-      title: 'La Ceremonia del Perdón',
-      description: "Realiza una práctica de Ho'oponopono para limpiar una herida familiar.",
+      title: 'El Mapa Numerológico del Niño',
+      description: 'Calcula el número de camino de vida del niño y su signo astrológico para descubrir su propósito.',
       questions: [
         {
           id: 'q1',
           type: 'textarea',
-          label: "¿Qué patrón transgeneracional identificas que necesita ser sanado en tu linaje?"
+          label: '¿Cuál es el número de camino de vida del niño (calculado a partir de su fecha de nacimiento) y qué revela sobre su propósito?'
         },
         {
           id: 'q2',
           type: 'textarea',
-          label: "Escribe las 4 frases del Ho'oponopono dirigidas a esa situación: Lo siento, Perdóname, Gracias, Te amo."
+          label: 'Describe el signo solar del niño y 2 rasgos de su personalidad que coinciden con esa energía astrológica.'
         },
         {
           id: 'q3',
           type: 'select',
-          label: '¿Cómo te sientes después de la práctica?',
-          options: ['Mucho más liviano/a', 'Algo de alivio', 'Neutral', 'Necesito más práctica', 'Surgieron emociones fuertes']
+          label: '¿Qué dimensión sientes que más necesitas reforzar al acompañar al niño según su mapa?',
+          options: ['Su propósito de vida (numerología)', 'Su naturaleza emocional (astrología)', 'Ambas por igual', 'Necesito profundizar más']
         }
       ]
     }

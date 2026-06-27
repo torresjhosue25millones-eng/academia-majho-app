@@ -18,9 +18,9 @@ function LogoImg({ className = 'h-10 w-auto', fallbackClass = '' }) {
 
 const PILLARS = [
   { icon: '🧠', title: 'Neurociencia', desc: 'Basado en la ciencia del desarrollo cerebral infantil' },
-  { icon: '💜', title: 'Consciencia', desc: 'Psicología y emociones desde el amor incondicional' },
-  { icon: '✨', title: 'Espiritualidad', desc: 'Sabiduría ancestral y conexión con el universo' },
-  { icon: '🌿', title: 'Integración', desc: 'Herramientas prácticas para la vida cotidiana' },
+  { icon: '🔮', title: 'PNL', desc: 'Reprogramación, anclas positivas y reencuadre para familias' },
+  { icon: '💚', title: 'Psicología Infantil', desc: 'Apego, emociones y límites con amor' },
+  { icon: '🌿', title: 'Sabiduría Ancestral', desc: 'Rituales, elementos y tradiciones que nutren el alma' },
 ]
 
 const TESTIMONIALS = [
