@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useAcademia } from '../context/AcademiaContext'
 import { MODULES } from '../data/modules'
 import Navbar from '../components/Navbar'
-import { PlayCircle, FileText, PenLine, ChevronLeft, ChevronRight, CheckCircle, Send } from 'lucide-react'
+import { PlayCircle, FileText, PenLine, ChevronLeft, ChevronRight, CheckCircle, Send, Download } from 'lucide-react'
 import styles from './ModulePage.module.css'
 
 function VideoTab({ module, watched, onWatch }) {
@@ -94,8 +94,17 @@ function PdfTab({ module, downloaded, onDownload }) {
     <div className={styles.tabContent}>
       <h2 className={styles.tabTitle}>Material del Módulo</h2>
       <p className={styles.tabDesc}>
-        Lee el material completo de este módulo directamente aquí. Son aproximadamente 18–20 páginas de contenido profundo y transformador.
+        Lee el material completo de este módulo directamente aquí, o descárgalo para conservarlo. Son aproximadamente 18–20 páginas de contenido profundo y transformador.
       </p>
+
+      <a
+        href={pdfUrl}
+        download={module.pdfName}
+        className="btn-primary"
+        style={{ marginBottom: '1rem', display: 'inline-flex' }}
+      >
+        <Download size={18} /> Descargar PDF
+      </a>
 
       <div className={styles.pdfViewerWrapper}>
         <iframe
