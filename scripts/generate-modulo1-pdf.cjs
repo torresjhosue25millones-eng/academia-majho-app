@@ -229,31 +229,25 @@ indice.forEach(item => {
 })
 footer()
 
-// ── SECCIÓN 1 (parte A): ¿Qué es el Método MAJHO? ──
+// ── SECCIÓN 1: ¿Qué es el Método MAJHO? ──
 doc.addPage()
 let y = sectionHeading(1, '¿Qué es el Método MAJHO y Para Quién Es?', 30)
-y = paragraph('MAJHO es un acrónimo que condensa la esencia del método: Mindfulness, Amor incondicional, Júbilo, Hogar sagrado y Origen espiritual. Cada letra representa una dimensión del ser que este método cultiva de forma integrada.', y)
-y = paragraph('El Método MAJHO está diseñado para educadores, maestros, facilitadores, madres, padres y cuidadores que sienten que los modelos convencionales de crianza y educación no responden a la profundidad de lo que son los niños de hoy.', y)
+y = paragraph('El Método MAJHO integra cuatro disciplinas —neurociencia, programación neurolingüística, psicología infantil y sabiduría ancestral— en un único marco profesional para acompañar a los niños de alta vibración. No es una colección de técnicas sueltas: es un sistema donde cada pilar sostiene a los demás.', y)
+y = paragraph('Está diseñado para educadores, maestros, facilitadores, madres, padres y cuidadores que sienten que los modelos convencionales de crianza y educación no responden a la profundidad de lo que son los niños de hoy.', y)
 y = quoteLine('"El niño no llegó para ser domesticado. Llegó para ser acompañado en el despliegue de su alma."', y)
 y = paragraph('¿Para quién NO es el Método MAJHO? No es para quien busca recetas mágicas de obediencia instantánea, ni para quien quiere controlar la experiencia del niño sin cuestionarse a sí mismo. Requiere disposición al cambio personal, porque la transformación del entorno siempre empieza por el adulto.', y, { gap: 6 })
 doc.setFont('helvetica', 'bold')
 doc.setFontSize(11)
-doc.setTextColor(...PURPLE)
-doc.text('Las 5 Letras del Método', MARGIN, y)
+doc.setTextColor(160, 130, 40)
+doc.text('Qué te llevarás al completar este programa', MARGIN, y)
 y += 8
-y = numberedCircleList([
-  [1, 'M · Mindfulness', 'Presencia plena en el momento con el niño. Sin distracciones, sin agenda, sin el pasado ni el futuro.'],
-  [2, 'A · Amor incondicional', 'Un amor que no depende del comportamiento del niño. El amor que sana los programas más profundos.'],
-  [3, 'J · Júbilo', 'La ligereza y el juego como vehículos de conexión y aprendizaje genuino.'],
-  [4, 'H · Hogar/Aula sagrada', 'El espacio físico y energético donde se desarrolla el niño: un templo de crecimiento.'],
+y = bulletList([
+  ['Un marco diagnóstico de 4 disciplinas', 'para leer cualquier caso infantil desde la ciencia y el alma, no solo desde la intuición.'],
+  ['Protocolos aplicables desde la primera sesión', 'anclajes y reencuadres de PNL, lectura del sistema nervioso, rituales de acompañamiento ancestral y el mapa numero-astral del niño.'],
+  ['Un lenguaje profesional compartido', 'con la comunidad MAJHO, para trabajar en red en vez de en aislamiento.'],
+  ['Certificación oficial como Guía MAJHO', 'con requisitos claros de práctica supervisada (Módulo 9).'],
+  ['Un plan de lanzamiento de 30 días', 'para empezar a aplicar el método en tu propia práctica profesional.'],
 ], y)
-footer()
-
-// ── SECCIÓN 1 (parte B): Letra O ──
-doc.addPage()
-y = numberedCircleList([
-  [5, 'O · Origen espiritual', 'El reconocimiento de que cada niño es un alma con historia, misión y propósito. La crianza y la educación como práctica espiritual del más alto orden.'],
-], 30)
 footer()
 
 // ── SECCIÓN 2: La crisis de la crianza moderna ──
