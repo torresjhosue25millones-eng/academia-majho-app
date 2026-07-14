@@ -8,7 +8,7 @@ export const MODULES = [
     color: '#7B5EA7',
     duration: '2h 30min',
     lessons: 6,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-1.mp4',
     pdfName: 'MAJHO_Modulo1_Bienvenida_Metodo_MAJHO.pdf',
     exercise: {
       title: 'Identificando el Tipo de Niño',
@@ -43,7 +43,7 @@ export const MODULES = [
     color: '#5C8A6E',
     duration: '3h 15min',
     lessons: 8,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-2.mp4',
     pdfName: 'MAJHO_Modulo2_Neurociencia_Infantil.pdf',
     exercise: {
       title: 'Mapa de Activación Neural',
@@ -77,7 +77,7 @@ export const MODULES = [
     color: '#C9A84C',
     duration: '4h 00min',
     lessons: 10,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-3.mp4',
     pdfName: 'MAJHO_Modulo3_PNL_Familias_Despiertas(1).pdf',
     exercise: {
       title: 'Instalando Anclas de Poder',
@@ -111,7 +111,7 @@ export const MODULES = [
     color: '#5C8A6E',
     duration: '3h 30min',
     lessons: 7,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-4.mp4',
     pdfName: 'MAJHO_Modulo4_Sabiduria_Ancestral.pdf',
     exercise: {
       title: 'Creando un Ritual Familiar',

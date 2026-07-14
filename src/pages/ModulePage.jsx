@@ -42,29 +42,40 @@ function VideoTab({ module, watched, onWatch }) {
         <p className={styles.tabDesc}>{module.description}</p>
 
         <div className={styles.videoWrapper}>
-          <div
-            className={styles.videoPlaceholder}
-            style={{ background: bgGradients[module.id] || bgGradients[1] }}
-            onClick={handleWatch}
-          >
-            <div className={styles.placeholderPattern} />
+          {module.videoUrl ? (
+            <video
+              className={styles.videoPlayer}
+              src={module.videoUrl}
+              controls
+              controlsList="nodownload"
+              onPlay={handleWatch}
+              style={{ width: '100%', borderRadius: '12px', background: '#000' }}
+            />
+          ) : (
+            <div
+              className={styles.videoPlaceholder}
+              style={{ background: bgGradients[module.id] || bgGradients[1] }}
+              onClick={handleWatch}
+            >
+              <div className={styles.placeholderPattern} />
 
-            <div className={styles.placeholderContent}>
-              <div className={styles.placeholderIcon}>{module.icon}</div>
-              <div className={styles.placeholderLogo}>MAJHO</div>
-              <h3 className={styles.placeholderTitle}>{module.title}</h3>
-              <p className={styles.placeholderSubtitle}>
-                {welcomeSubtitles[module.id]}
-              </p>
-              <div className={styles.placeholderDivider} />
-              <p className={styles.placeholderTag}>Academia MAJHO · Crianza Consciente & Espiritualidad Familiar</p>
-            </div>
+              <div className={styles.placeholderContent}>
+                <div className={styles.placeholderIcon}>{module.icon}</div>
+                <div className={styles.placeholderLogo}>MAJHO</div>
+                <h3 className={styles.placeholderTitle}>{module.title}</h3>
+                <p className={styles.placeholderSubtitle}>
+                  {welcomeSubtitles[module.id]}
+                </p>
+                <div className={styles.placeholderDivider} />
+                <p className={styles.placeholderTag}>Academia MAJHO · Crianza Consciente & Espiritualidad Familiar</p>
+              </div>
 
-            <div className={styles.placeholderPlayBtn}>
-              <PlayCircle size={52} color="rgba(255,255,255,0.85)" />
-              <span>Video próximamente</span>
+              <div className={styles.placeholderPlayBtn}>
+                <PlayCircle size={52} color="rgba(255,255,255,0.85)" />
+                <span>Video próximamente</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {watched && (
