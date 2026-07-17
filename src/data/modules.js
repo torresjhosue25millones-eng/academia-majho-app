@@ -146,7 +146,7 @@ export const MODULES = [
     duration: '3h 00min',
     lessons: 8,
     videoUrl: '',
-    pdfName: 'MAJHO_Modulo5_Meditacion_Visualizacion.pdf',
+    pdfName: 'MAJHO_Modulo5_Meditacion_Practicas_Energeticas.pdf',
     exercise: {
       title: 'Mi Primera Meditación Guiada',
       description: 'Practica y adapta una meditación guiada para el niño que acompañas.',
