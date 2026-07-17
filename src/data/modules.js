@@ -145,7 +145,7 @@ export const MODULES = [
     color: '#7B5EA7',
     duration: '3h 00min',
     lessons: 8,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-5.mp4',
     pdfName: 'MAJHO_Modulo5_Meditacion_Practicas_Energeticas.pdf',
     exercise: {
       title: 'Mi Primera Meditación Guiada',
