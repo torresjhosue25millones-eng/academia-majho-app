@@ -180,7 +180,7 @@ export const MODULES = [
     color: '#F2C4CE',
     duration: '3h 45min',
     lessons: 9,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-6.mp4',
     pdfName: 'MAJHO_Modulo6_Psicologia_Infantil_Consciente.pdf',
     exercise: {
       title: 'El Termómetro Emocional Familiar',
