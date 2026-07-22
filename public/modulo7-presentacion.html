@@ -595,6 +595,24 @@
       else document.exitFullscreen();
     }
   });
+  // Mostrar todas las slides antes de imprimir para PDF completo
+  window.onbeforeprint = () => {
+    document.querySelector('.slide-wrapper').style.aspectRatio = 'auto';
+    document.querySelector('.slide-wrapper').style.height = 'auto';
+    slides.forEach(s => { s.style.display = 'flex'; s.style.marginBottom = '0'; });
+    document.querySelector('.nav').style.display = 'none';
+    document.querySelector('.progress-bar').style.display = 'none';
+    document.querySelector('.key-hint').style.display = 'none';
+  };
+  window.onafterprint = () => {
+    document.querySelector('.slide-wrapper').style.aspectRatio = '';
+    document.querySelector('.slide-wrapper').style.height = '';
+    slides.forEach(s => { s.style.display = ''; });
+    slides[current].style.display = 'flex';
+    document.querySelector('.nav').style.display = '';
+    document.querySelector('.progress-bar').style.display = '';
+    document.querySelector('.key-hint').style.display = '';
+  };
 </script>
 </body>
 </html>
