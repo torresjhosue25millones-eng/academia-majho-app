@@ -9,15 +9,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --gold: #C8A96E;
-      --purple: #6B4FA0;
-      --purple-light: #9B7EC8;
+      --green: #5C8A6E;
+      --green-light: #7aaa8a;
       --white: #FFFFFF;
       --cream: #FAF7F2;
       --text-soft: #555555;
     }
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #1a1a2e;
+      background: #0f1f17;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -32,17 +32,17 @@
 
     /* LAYOUTS */
     .slide-cover {
-      background: linear-gradient(135deg, #1a0533 0%, #3b1a6e 50%, #1a0533 100%);
+      background: linear-gradient(135deg, #0f2a1a 0%, #1e4a30 50%, #0f2a1a 100%);
       flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 80px;
     }
     .slide-content { background: var(--cream); flex-direction: column; padding: 44px 60px; position: relative; }
     .slide-content-dark {
-      background: linear-gradient(135deg, #2a0f52 0%, #1a0533 100%);
+      background: linear-gradient(135deg, #0f2d1e 0%, #0f2a1a 100%);
       flex-direction: column; padding: 44px 60px; color: var(--white);
     }
     .slide-two-col { background: var(--cream); flex-direction: row; padding: 0; }
     .col-left {
-      background: linear-gradient(160deg, var(--purple) 0%, #3b1a6e 100%);
+      background: linear-gradient(160deg, var(--green) 0%, #1e4a30 100%);
       width: 38%; padding: 44px 36px; display: flex; flex-direction: column; justify-content: center; color: var(--white);
     }
     .col-right { flex: 1; padding: 44px 44px; display: flex; flex-direction: column; justify-content: center; }
@@ -50,14 +50,14 @@
     /* DECORATIVE */
     .gold-line { width: 60px; height: 3px; background: var(--gold); margin: 14px auto; border-radius: 2px; }
     .gold-line.left { margin: 14px 0; }
-    .accent-bar { position: absolute; left:0; top:0; bottom:0; width:6px; background: linear-gradient(180deg, var(--gold) 0%, var(--purple) 100%); }
+    .accent-bar { position: absolute; left:0; top:0; bottom:0; width:6px; background: linear-gradient(180deg, var(--gold) 0%, var(--green) 100%); }
 
     /* TYPOGRAPHY */
     .label { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
     h1 { font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 700; color: var(--white); line-height: 1.1; }
-    h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--purple); line-height: 1.2; margin-bottom: 6px; }
+    h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--green); line-height: 1.2; margin-bottom: 6px; }
     h2.white { color: var(--white); } h2.gold { color: var(--gold); }
-    h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--purple); margin-bottom: 6px; }
+    h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--green); margin-bottom: 6px; }
     h3.white { color: var(--white); }
     p { font-size: 13px; line-height: 1.75; color: var(--text-soft); }
     p.white { color: rgba(255,255,255,0.85); font-size: 12.5px; }
@@ -75,16 +75,16 @@
 
     /* TABLES */
     .mtable { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 11.5px; }
-    .mtable th { background: var(--purple); color: var(--white); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 1px; }
+    .mtable th { background: var(--green); color: var(--white); padding: 8px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 1px; }
     .mtable td { padding: 7px 12px; border-bottom: 1px solid rgba(0,0,0,0.06); color: var(--text-soft); line-height: 1.45; }
-    .mtable tr:nth-child(even) td { background: rgba(107,79,160,0.04); }
-    .mtable td:first-child { font-weight: 700; color: var(--purple); }
+    .mtable tr:nth-child(even) td { background: rgba(92,138,110,0.04); }
+    .mtable td:first-child { font-weight: 700; color: var(--green); }
 
     /* NUMERO CARDS */
     .num-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
     .num-card { background: var(--white); border-radius: 8px; padding: 12px 14px; border-left: 3px solid var(--gold); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
     .num-card .num-tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; }
-    .num-card h4 { font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--purple); margin:3px 0 4px; }
+    .num-card h4 { font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--green); margin:3px 0 4px; }
     .num-card p { font-size: 11px; color: var(--text-soft); line-height: 1.5; }
 
     /* ELEMENTO CARDS */
@@ -92,7 +92,7 @@
     .elem-card { border-radius: 8px; padding: 16px 20px; }
     .elem-card.fuego { background: linear-gradient(135deg, #f5a623 0%, #e8891a 100%); }
     .elem-card.tierra { background: linear-gradient(135deg, #5c8a6e 0%, #3d6b52 100%); }
-    .elem-card.aire { background: linear-gradient(135deg, #7B5EA7 0%, #5a3d8a 100%); }
+    .elem-card.aire { background: linear-gradient(135deg, #5C8A6E 0%, #3d6b52 100%); }
     .elem-card.agua { background: linear-gradient(135deg, #3d7ab5 0%, #2a5f96 100%); }
     .elem-card h4 { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:700; color:#fff; margin-bottom:4px; }
     .elem-card .signos { font-size:11px; color:rgba(255,255,255,0.85); margin-bottom:6px; font-style:italic; }
@@ -107,9 +107,9 @@
 
     /* CASA CARDS */
     .casa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-    .casa-card { background: var(--white); border-radius:8px; padding:16px 18px; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-top:3px solid var(--purple-light); }
+    .casa-card { background: var(--white); border-radius:8px; padding:16px 18px; box-shadow:0 2px 8px rgba(0,0,0,0.06); border-top:3px solid var(--green-light); }
     .casa-card .casa-num { font-size:10px; font-weight:700; letter-spacing:2px; color:var(--gold); text-transform:uppercase; }
-    .casa-card h4 { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--purple); margin:4px 0 6px; }
+    .casa-card h4 { font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--green); margin:4px 0 6px; }
     .casa-card p { font-size:11.5px; color:var(--text-soft); line-height:1.5; font-style:italic; }
 
     /* CICLO TABLE */
@@ -138,7 +138,7 @@
     .key-hint { font-size:11px; color:rgba(255,255,255,0.22); margin-top:8px; letter-spacing:1px; }
 
     /* HIGHLIGHT */
-    strong.g { color: var(--purple); }
+    strong.g { color: var(--green); }
   </style>
 </head>
 <body>
@@ -267,22 +267,22 @@
       <p style="margin-top:10px; max-width:700px;">El nombre completo del niño revela dos números complementarios usando la tabla pitagórica (cada letra equivale a un número del 1 al 9). Las <strong class="g">consonantes</strong> forman el Número de Personalidad; las <strong class="g">vocales</strong> forman el Número del Alma.</p>
       <div style="background:var(--white); border-radius:8px; padding:14px 20px; margin-top:14px; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         <table style="width:100%; font-size:12px; border-collapse:collapse;">
-          <tr style="background:var(--purple); color:#fff;">
+          <tr style="background:var(--green); color:#fff;">
             <td style="padding:6px 10px; font-weight:600;">Letras</td>
             <td style="padding:6px 10px;">A, J, S</td><td style="padding:6px 10px;">B, K, T</td><td style="padding:6px 10px;">C, L, U</td><td style="padding:6px 10px;">D, M, V</td>
             <td style="padding:6px 10px;">E, N, W</td><td style="padding:6px 10px;">F, O, X</td><td style="padding:6px 10px;">G, P, Y</td><td style="padding:6px 10px;">H, Q, Z</td><td style="padding:6px 10px;">I, R</td>
           </tr>
-          <tr style="background:#f5f0fb;">
+          <tr style="background:#f0f7f3;">
             <td style="padding:6px 10px; font-weight:700; color:var(--gold);">Valor</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">1</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">2</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">3</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">4</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">5</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">6</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">7</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">8</td>
-            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--purple);">9</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">1</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">2</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">3</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">4</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">5</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">6</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">7</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">8</td>
+            <td style="padding:6px 10px; text-align:center; font-weight:700; color:var(--green);">9</td>
           </tr>
         </table>
       </div>
@@ -313,12 +313,12 @@
           <p style="font-size:11px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px;">☀ El Sol</p>
           <p style="font-size:12px;">La identidad consciente que el niño irá construyendo: su signo solar clásico.</p>
         </div>
-        <div style="background:var(--white); border-radius:8px; padding:12px 16px; border-left:4px solid var(--purple-light); box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-          <p style="font-size:11px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px;">☽ La Luna</p>
+        <div style="background:var(--white); border-radius:8px; padding:12px 16px; border-left:4px solid var(--green-light); box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+          <p style="font-size:11px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px;">☽ La Luna</p>
           <p style="font-size:12px;">El mundo emocional inmediato, lo que el niño necesita para sentirse seguro y contenido.</p>
         </div>
-        <div style="background:var(--white); border-radius:8px; padding:12px 16px; border-left:4px solid #9B7EC8; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
-          <p style="font-size:11px; font-weight:700; color:var(--purple-light); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px;">↑ El Ascendente</p>
+        <div style="background:var(--white); border-radius:8px; padding:12px 16px; border-left:4px solid #7aaa8a; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+          <p style="font-size:11px; font-weight:700; color:var(--green-light); text-transform:uppercase; letter-spacing:1px; margin-bottom:3px;">↑ El Ascendente</p>
           <p style="font-size:12px;">La forma instintiva en que el niño reacciona y se presenta ante lo nuevo.</p>
         </div>
       </div>
@@ -373,8 +373,8 @@
           <h4 style="font-family:'Cormorant Garamond',serif; font-size:17px; color:#3d6b52; margin-bottom:6px;">🌿 Luna en Tierra</h4>
           <p style="font-size:12px;">Se calma con rutina, contacto físico y previsibilidad. Los cambios repentinos la desestabilizan.</p>
         </div>
-        <div style="background:linear-gradient(135deg,#7B5EA722,#7B5EA708); border-radius:8px; padding:14px 16px; border-left:4px solid var(--purple);">
-          <h4 style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--purple); margin-bottom:6px;">💨 Luna en Aire</h4>
+        <div style="background:linear-gradient(135deg,#5C8A6E22,#5C8A6E08); border-radius:8px; padding:14px 16px; border-left:4px solid var(--green);">
+          <h4 style="font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--green); margin-bottom:6px;">💨 Luna en Aire</h4>
           <p style="font-size:12px;">Necesita poner en palabras lo que siente. Hablarlo es, para ella, lo que para otros es llorar.</p>
         </div>
         <div style="background:linear-gradient(135deg,#3d7ab522,#3d7ab508); border-radius:8px; padding:14px 16px; border-left:4px solid #3d7ab5;">
@@ -452,8 +452,8 @@
           <p>¿Qué admira el niño y a quién le gustaría parecerse?</p>
         </div>
       </div>
-      <div style="background:#f0eafa; border-radius:8px; padding:12px 16px; margin-top:14px;">
-        <p style="font-size:12px; color:var(--purple);">Usa calculadoras de carta natal gratuitas (con fecha, hora y lugar de nacimiento) para obtener el mapa completo del niño.</p>
+      <div style="background:#e8f5ee; border-radius:8px; padding:12px 16px; margin-top:14px;">
+        <p style="font-size:12px; color:var(--green);">Usa calculadoras de carta natal gratuitas (con fecha, hora y lugar de nacimiento) para obtener el mapa completo del niño.</p>
       </div>
     </div>
     <div class="logo-footer">Academia MAJHO</div>
