@@ -214,7 +214,7 @@ export const MODULES = [
     color: '#F2C4CE',
     duration: '3h 45min',
     lessons: 8,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-7.mp4',
     pdfName: 'MAJHO_Modulo7_Numerologia_Astrologia.pdf',
     exercise: {
       title: 'El Mapa Numerológico del Niño',
@@ -248,7 +248,7 @@ export const MODULES = [
     color: '#C9A84C',
     duration: '4h 30min',
     lessons: 11,
-    videoUrl: '',
+    videoUrl: '/videos/modulo-8.mp4',
     pdfName: 'MAJHO_Modulo8_Tipos_Vibracion.pdf',
     exercise: {
       title: 'El Mapa de Vibración del Niño',
